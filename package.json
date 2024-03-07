@@ -1,7 +1,6 @@
 {
-  "name": "@medusa-payment-paystack/monorepo",
-  "private": true,
-  "description": "Monorepo for medusa-payment-paystack package and starters",
+  "name": "@medusa-payment-paystack-modified/monorepo",
+  "description": "Modified Monorepo for medusa-payment-paystack package and starters",
   "license": "MIT",
   "scripts": {
     "dev": "turbo dev",

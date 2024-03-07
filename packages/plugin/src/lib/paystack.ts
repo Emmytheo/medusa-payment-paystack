@@ -48,6 +48,8 @@ export default class Paystack {
 
     const options = {
       method: request.method,
+      hostname: "api.paystack.co",
+      port: 443,
       path,
       headers: {
         Authorization: `Bearer ${this.apiKey}`,
@@ -56,7 +58,7 @@ export default class Paystack {
     };
 
     return new Promise((resolve, reject) => {
-      const req = https.request(PAYSTACK_API_PATH, options, res => {
+      const req = https.request(options, res => {
         let data: Uint8Array[] = [];
 
         res.on("data", chunk => {
@@ -114,11 +116,13 @@ export default class Paystack {
       email,
       currency,
       reference,
+      split_code,
     }: {
       amount: number;
       email?: string;
       currency?: SupportedCurrency;
       reference?: string;
+      split_code?: string;
     }) =>
       this.requestPaystackAPI<
         PaystackResponse<{
@@ -134,6 +138,7 @@ export default class Paystack {
           email,
           currency,
           reference,
+          split_code,
         },
       }),
   };
